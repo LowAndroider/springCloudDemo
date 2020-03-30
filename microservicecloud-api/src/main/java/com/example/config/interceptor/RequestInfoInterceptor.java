@@ -42,8 +42,9 @@ public class RequestInfoInterceptor implements HandlerInterceptor {
             //请求方式  post\put\get 等等
             sb.append("RequestMethod    : ").append(httpServletRequest.getMethod()).append("\n");
             //所有的请求参数
-            sb.append("Params    : ").append(getParameterInfo(httpServletRequest).toString()).append("\n");
-            sb.append("body: ").append(responseStrBuilder.toString()).append("\n");
+            Map<String, Object> parameterInfo = getParameterInfo(httpServletRequest);
+            sb.append("Params    : ").append(parameterInfo.isEmpty()? "": parameterInfo.toString()).append("\n");
+            sb.append("body      : ").append(responseStrBuilder.toString()).append("\n");
             //部分请求链接
             sb.append("URI       : ").append(httpServletRequest.getRequestURI()).append("\n");
             //完整的请求链接
