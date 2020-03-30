@@ -3,24 +3,28 @@ package com.example.controller;
 import com.example.config.R;
 import com.example.entities.Dept;
 import com.example.util.HttpEntityUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @author Djh
+ */
+@AllArgsConstructor
 @RestController
 @RequestMapping("/consumer/dept")
 public class DeptControllerConsumer {
 
-    private static final String REST_URL_PREFIX = "http://localhost:8001/dept";
+    private static final String REST_URL_PREFIX = "http://microservicecloud-dept/dept";
 
-    @Autowired
     private RestTemplate restTemplate;
 
     @PostMapping()
     public R add(Dept dept) {
         // 默认直接丢对象属于application/json
-        HttpEntity httpEntity = HttpEntityUtil.getFormHttpEntity(dept);
+        HttpEntity<MultiValueMap<String, Object>> httpEntity = HttpEntityUtil.getFormHttpEntity(dept);
         return restTemplate.postForObject(REST_URL_PREFIX, httpEntity, R.class);
     }
 

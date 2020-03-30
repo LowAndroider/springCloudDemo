@@ -14,7 +14,7 @@ public class HttpEntityUtil {
      * @param requestObj 请求参数
      * @return 请求实体
      */
-    public static HttpEntity getFormHttpEntity(Object requestObj) {
+    public static HttpEntity<MultiValueMap<String, Object>> getFormHttpEntity(Object requestObj) {
         JSONObject json = (JSONObject) JSON.toJSON(requestObj);
         MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         json.forEach((s, object) -> {
