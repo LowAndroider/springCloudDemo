@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 
 public interface DeptDao extends BaseMapper<Dept> {
 
+    @Override
     @Insert("INSERT INTO dept(d_name, db_source) VALUES (#{dName}, DATABASE())")
     int insert(Dept dept);
 }
