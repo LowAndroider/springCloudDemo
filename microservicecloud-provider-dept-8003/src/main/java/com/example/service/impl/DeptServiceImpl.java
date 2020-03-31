@@ -1,8 +1,9 @@
-package com.example.service;
+package com.example.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.dao.DeptDao;
 import com.example.entities.Dept;
+import com.example.service.DeptService;
 import org.springframework.stereotype.Service;
 
 @Service
