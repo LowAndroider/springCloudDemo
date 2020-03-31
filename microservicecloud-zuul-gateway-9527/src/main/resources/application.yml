@@ -18,3 +18,4 @@ zuul:
     deptService.serviceId: "*"
     deptService.path: /deptService/**
   ignored-services: microservicecloud-dept
+  prefix: /prefix
