@@ -32,4 +32,12 @@ public class R {
     public static R ok(Object data) {
         return ok("请求成功", data);
     }
+
+    public static R error(Object data, String msg) {
+        return error(500, data, msg);
+    }
+
+    public static R error(int code, Object data, String msg) {
+        return new R().setCode(code).setData(data).setMsg(msg);
+    }
 }
