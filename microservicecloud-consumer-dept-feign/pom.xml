@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservicecloud-consumer-dept-80</artifactId>
-    <description>部门微服务消费者</description>
+    <artifactId>microservicecloud-consumer-dept-feign</artifactId>
 
     <dependencies>
         <dependency>
@@ -49,5 +48,11 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
     </dependencies>
+
 </project>

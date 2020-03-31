@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "dept.provider.name",
+      "type": "java.lang.String",
+      "description": "部门服务提供者eureka注册名称."
+    }
+  ]
+}

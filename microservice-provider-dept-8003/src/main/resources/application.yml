@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8003
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cloudDB01
+    url: jdbc:mysql://localhost:3306/cloudDB03
     username: root
     password: ROOT1234
     dbcp2:
@@ -25,7 +25,7 @@ eureka:
     service-url:
       defaultZone: http://eureka1.com:7001/eureka, http://eureka2.com:7002/eureka, http://eureka3.com:7003/eureka
   instance:
-    instance-id: deptProvider8001
+    instance-id: deptProvider8003
     prefer-ip-address: true
 info:
   build.artifactId: $project.artifactId$。

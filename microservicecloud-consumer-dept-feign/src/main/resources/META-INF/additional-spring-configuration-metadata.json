@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "dept.provider.url",
+      "type": "java.lang.String",
+      "description": "Description for dept.provider.url."
+    },
+    {
+      "name": "dept.provider.description",
+      "type": "java.lang.String",
+      "description": "Description for dept.provider.description."
+    }
+  ]
+}

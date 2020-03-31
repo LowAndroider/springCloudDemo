@@ -4,6 +4,7 @@ import com.example.config.R;
 import com.example.entities.Dept;
 import com.example.util.HttpEntityUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,8 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/consumer/dept")
 public class DeptControllerConsumer {
 
-    private static final String REST_URL_PREFIX = "http://microservicecloud-dept/dept";
+    @Value("${dept.provider.url}:\"\"")
+    private String deptProviderUrl;
 
     private RestTemplate restTemplate;
 
@@ -25,18 +27,18 @@ public class DeptControllerConsumer {
     public R add(Dept dept) {
         // 默认直接丢对象属于application/json
         HttpEntity<MultiValueMap<String, Object>> httpEntity = HttpEntityUtil.getFormHttpEntity(dept);
-        return restTemplate.postForObject(REST_URL_PREFIX, httpEntity, R.class);
+        return restTemplate.postForObject(deptProviderUrl + "dept", httpEntity, R.class);
     }
 
     @GetMapping("/{id}")
     public R get(@PathVariable Long id) {
-        String url = REST_URL_PREFIX + "/" + id;
+        String url = deptProviderUrl + "/dept/" + id;
         return restTemplate.getForObject(url, R.class);
     }
 
     @GetMapping("/list")
     public R list() {
-        String url = REST_URL_PREFIX + "/list";
+        String url = deptProviderUrl + "/dept/list";
         return restTemplate.getForObject(url, R.class);
     }
 }
