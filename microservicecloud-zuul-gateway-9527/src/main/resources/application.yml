@@ -15,6 +15,6 @@ eureka:
 
 zuul:
   routes:
-    deptService.serviceId: microservicecloud-dept
+    deptService.serviceId: "*"
     deptService.path: /deptService/**
   ignored-services: microservicecloud-dept
