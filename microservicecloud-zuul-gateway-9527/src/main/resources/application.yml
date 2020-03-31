@@ -17,3 +17,4 @@ zuul:
   routes:
     deptService.serviceId: microservicecloud-dept
     deptService.path: /deptService/**
+  ignored-services: microservicecloud-dept
