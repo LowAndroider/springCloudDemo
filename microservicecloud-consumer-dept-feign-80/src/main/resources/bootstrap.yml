@@ -1,0 +1,14 @@
+server:
+  port: 80
+
+spring:
+  cloud:
+    config:
+      # 文件名
+      name: microservicecloud-consumer-dept-feign-80
+      # 配置组
+      profile: dev
+      # git分支名
+      label: master
+      # springCloudConfig服务器
+      uri: http://localhost:3344
