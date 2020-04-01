@@ -15,7 +15,13 @@ eureka:
 
 zuul:
   routes:
-    deptService.serviceId: "*"
-    deptService.path: /deptService/**
-  ignored-services: microservicecloud-dept
+    deptService:
+      serviceId: microservicecloud-dept
+      path: /deptService/**
+    deptService2:
+      serviceId: microservicecloud-dept2
+      path: /microservicecloud-dept/**
+  # 忽略所有注册原服务名称，也可用具体的serviceName多个逗号分隔
+  ignored-services: "*"
+  # 网关统一公共前缀
   prefix: /prefix
