@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface DeptClientService {
 
     @PostMapping("")
-    R add(Dept dept);
+    R<?> add(Dept dept);
 
     @GetMapping("/{id}")
-    R get(@PathVariable("id") Long id);
+    R<Dept> get(@PathVariable("id") Long id);
 
     @GetMapping("/list")
-    R list();
+    R<Dept> list();
 }

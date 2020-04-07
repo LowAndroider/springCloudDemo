@@ -17,17 +17,17 @@ public class DeptControllerConsumer {
     private DeptClientService deptClientService;
 
     @PostMapping()
-    public R add(Dept dept) {
+    public R<?> add(Dept dept) {
         return deptClientService.add(dept);
     }
 
     @GetMapping("/{id}")
-    public R get(@PathVariable Long id) {
+    public R<Dept> get(@PathVariable Long id) {
         return deptClientService.get(id);
     }
 
     @GetMapping("/list")
-    public R list() {
+    public R<Dept> list() {
         return deptClientService.list();
     }
 }

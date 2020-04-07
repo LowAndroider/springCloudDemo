@@ -4,6 +4,7 @@ import com.example.config.R;
 import com.example.entities.Dept;
 import com.example.service.DeptService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -24,15 +25,16 @@ public class DeptController {
     private DeptService deptService;
 
     @PostMapping("")
+    @ApiOperation("添加部门")
     @HystrixCommand
-    public R add( Dept dept) {
+    public R<?> add(Dept dept) {
         deptService.save(dept);
         return R.ok();
     }
 
     @GetMapping("/{id}")
     @HystrixCommand(fallbackMethod = "processHystrixGet")
-    public R get(@PathVariable Long id) {
+    public R<Dept> get(@PathVariable Long id) {
         Dept dept = deptService.getById(id);
         if (dept == null) {
             throw new RuntimeException("该ID: " + id + "没有对应的信息");
@@ -43,7 +45,7 @@ public class DeptController {
 
     public R processHystrixGet(Long id) {
         Dept dept = new Dept().setDeptNo(id)
-                .setDName("该ID: " + id + "没有对应的信息")
+                .setDeptName("该ID: " + id + "没有对应的信息")
                 .setDbSource("no database");
 
         return R.error(dept, "");
@@ -51,7 +53,7 @@ public class DeptController {
 
     @GetMapping("/list")
     @HystrixCommand
-    public R list() {
+    public R<Dept> list() {
         List<Dept> list = deptService.list();
         return R.ok(list);
     }
