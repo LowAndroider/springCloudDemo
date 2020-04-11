@@ -3,8 +3,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: com.example.entites
-  mapper-locations:
-    - classpath-mybatis/mapper/**/*.xml
 
 dept:
   provider:
